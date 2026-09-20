@@ -11,6 +11,7 @@ app = Dash(
     suppress_callback_exceptions=True,
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}]
 )
+server = app.server  # Expose Flask server for gunicorn
 
 # Data Ingestion & Preprocessing
 df = pd.read_csv('sales_data.csv')
@@ -851,4 +852,4 @@ def update_dashboard(start_date, end_date, selected_regions, selected_categories
     )
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8050)
+    app.run(debug=False, port=8050)
